@@ -8,6 +8,36 @@
   if( !isset($_SESSION['user_email']) || !isset($_SESSION['user_name']) )
   {
 
+    if(!mysql_select_db("mywallet",$con))
+    {
+      $con = mysql_connect("127.0.0.1","root","kush@1996");
+      $q = 'CREATE DATABASE mywallet';
+      mysql_query($q,$con);
+      mysql_select_db('mywallet',$con);
+    }
+
+      $query = "CREATE TABLE IF NOT EXISTS `user_info` (
+          `id` int(11) unsigned NOT NULL auto_increment PRIMARY KEY,
+          `fname` varchar(40) NOT NULL,
+          `lname` varchar(40) NOT NULL,
+          `dob` date NOT NULL,
+          `mobile` int(12) NOT NULL,
+          `email` varchar(40) NOT NULL,
+          `balance` int(12) NOT NULL,
+          `pass` varchar(40) NOT NULL)";
+
+      mysql_query($query,$con);
+
+      $query = "CREATE TABLE IF NOT EXISTS `balance_log` (
+          `id` int(11) unsigned NOT NULL auto_increment PRIMARY KEY,
+          `uid` int(11) NOT NULL,
+          `amount` integer(40) NOT NULL,
+          `timestamp` TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP ,
+          `comment` varchar(200) NOT NULL,
+          `reason` integer(1) NOT NULL)";
+
+      mysql_query($query,$con);
+
 
 echo "
 

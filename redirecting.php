@@ -25,9 +25,13 @@
 			if ($row['pass'] == $_POST['signin_pass'])
 			{
 				session_regenerate_id();
+				
 				$_SESSION['user_email'] = $row['email'];
 				$_SESSION['user_name'] = $row['fname'];
+				$_SESSION['uid'] = $row['id'];
+				$_SESSION['balance'] = $row['balance'];
 				$_SESSION['message'] = "";
+
 				session_write_close();
 				$found=1;
 				$_SESSION['stata'] = 'valid';
@@ -54,19 +58,9 @@
 			$con = mysql_connect("127.0.0.1", "root","kush@1996");
 			mysql_select_db("mywallet",$con);
 
-			$query = "CREATE TABLE IF NOT EXISTS `user_info` (
-    			`id` int(11) unsigned NOT NULL auto_increment PRIMARY KEY,
-    			`fname` varchar(40) NOT NULL,
-    			`lname` varchar(40) NOT NULL,
-   				`dob` date NOT NULL,
-   				`mobile` int(12) NOT NULL,
-    			`email` varchar(40) NOT NULL,
-    			`pass` varchar(40) NOT NULL)";
-
-			mysql_query($query,$con);		
-
-			$q1 = "INSERT INTO user_info (fname,lname,email,dob,mobile,pass) VALUES ('$_POST[fname]','$_POST[lname]','$_POST[email]','$_POST[dob]','$_POST[number]','$_POST[pass]')";		
+			$q1 = "INSERT INTO user_info (fname,lname,email,dob,mobile,balance,pass) VALUES ('$_POST[fname]','$_POST[lname]','$_POST[email]','$_POST[dob]','$_POST[number]','0','$_POST[pass]')";		
 			mysql_query($q1,$con);
+
 			$_SESSION['state'] = 'invalid';
 			$_SESSION['message'] = "successfully registered";
 			header("Location: index.php");
