@@ -72,7 +72,6 @@
 
                 <div class='panel-body'>
 
-                <img src = './images/wallet.jpg' height = '500' wordth = '500'>
                 <div class = 'row'>
                 <div class = 'col-md-2'>
                 <a href = '#' data-toggle='modal' data-target='#add-modal' class = 'fa fa-plus fa-5x'></a>
