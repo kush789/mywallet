@@ -21,8 +21,12 @@
 		$currbal = $currbal + $addbal;
 		$_SESSION['balance'] = $currbal;
 
-		$query = "UPDATE user_info SET balance = '$_SESSION[balance]' WHERE id = '$_SESSION[id]'";
+		$query = "UPDATE user_info SET balance = '$_SESSION[balance]' WHERE id = '$_SESSION[uid]'";
 		mysql_query($query,$con);
+
+		$query = "INSERT INTO balance_log (uid,type,amount,comment,reason) VALUES ('$_SESSION[uid]','1','$addbal','$_POST[add_comment]','-1') ";		
+		mysql_query($query,$con);
+
 
 		header("Location: index.php");
 	}
@@ -40,6 +44,9 @@
 		{
 			$_SESSION['balance'] = $currbal;
 			$query = "UPDATE user_info SET balance = '$_SESSION[balance]' WHERE id = '$_SESSION[id]'";
+			mysql_query($query,$con);
+
+			$query = "INSERT INTO balance_log (uid,type,amount,comment,reason) VALUES ('$_SESSION[uid]','0','$subbal','$_POST[sub_comment]','$_POST[sub_reason]') ";		
 			mysql_query($query,$con);
 
 		}

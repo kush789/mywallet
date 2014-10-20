@@ -118,11 +118,21 @@ echo "
 
             <form method = 'POST' action = 'transactions.php'>
             <div class = 'row'>
+              <div class = 'col-md-6'>
+                <div class = 'form-group'>
+                  <input type = 'number' name = 'add' placeholder = 'Enter amount' autocomplete = 'off' class='form-control input-lg'><br>
+                </div>
+              </div>
+              <div class = 'col-md-6'>
+                <div class = 'form-group'>
+                  <input type = 'text' name = 'add_comment' placeholder = 'Other Comments' autocomplete = 'off' class='form-control input-lg'><br>
+                </div>
+              </div>
+            </div>
+
+            <div class = 'row'>
             <div class = 'col-md-3'></div>
             <div class = 'col-md-6'>
-              <div class = 'form-group'>
-                  <input type = 'number' name = 'add' placeholder = 'Enter amount' autocomplete = 'off' class='form-control input-lg'><br>
-              </div>
               <div class = 'form-group'>
                 <input type = 'submit' name = 'add_submit' class = 'btn btn-lg btn-block' value = 'ADD'>
               </div>
@@ -138,7 +148,7 @@ echo "
       </div>
     </div>
 <!-- add modal ends -->
-<!-- add modal -->
+<!-- sub modal -->
 
     <div class='modal fade' id='withdraw-modal' tabindex='-1' role='dialog' aria-labelledby='myModalLabel' aria-hidden='true'>
       <div class='modal-dialog'>
@@ -154,19 +164,42 @@ echo "
 
             <form method = 'POST' action = 'transactions.php'>
             <div class = 'row'>
-            <div class = 'col-md-3'></div>
             <div class = 'col-md-6'>
               <div class = 'form-group'>
                   <input type = 'number' name = 'sub' placeholder = 'Enter amount' autocomplete = 'off' class='form-control input-lg'><br>
               </div>
+            </div>
+            <div class = 'col-md-6'>
               <div class = 'form-group'>
-                <input type = 'submit' name = 'subtract_submit' class = 'btn btn-lg btn-block' value = 'WITHDRAW'>
+                <select name = 'sub_reason' class='form-control input-lg' placeholder = 'Reason'>
+                  <option value = '0'>Food</option>
+                  <option value = '1'>Clothes</option>
+                  <option value = '2'>Entertainment</option>
+                  <option value = '3'>Books</option>
+                  <option value = '4'>Travel</option>
+                  <option value = '5'>Miscellaneous</option>
+                </select>
               </div>
-
+            </div>
+            <div class = 'col-md-12'>
+              <div class = 'form-group'>
+                  <input type = 'text' name = 'sub_comment' placeholder = 'Other comments' autocomplete = 'off' class='form-control input-lg'><br>
+              </div>
+            </div>
+            </div>
+            <div class = 'row'>
+            <div class = 'col-md-3'></div>
+            <div class = 'col-md-6'>
+              <div class = 'form-group'>
+                <input type = 'submit' name = 'subtract_submit' class = 'btn btn-lg btn-block' value = 'ADD'>
+              </div>
             </div>
             </div>
 
             </form>
+ 
+
+
 
            
            </div>
@@ -174,7 +207,7 @@ echo "
         </div>
       </div>
     </div>
-<!-- add modal ends -->
+<!-- sub modal ends -->
 
  
     <script src='./js/jquery-1.10.2.min.js'></script>

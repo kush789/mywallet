@@ -31,9 +31,10 @@
       $query = "CREATE TABLE IF NOT EXISTS `balance_log` (
           `id` int(11) unsigned NOT NULL auto_increment PRIMARY KEY,
           `uid` int(11) NOT NULL,
+          `type` int(1) NOT NULL,
           `amount` integer(40) NOT NULL,
           `timestamp` TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP ,
-          `comment` varchar(200) NOT NULL,
+          `comment` varchar(200),
           `reason` integer(1) NOT NULL)";
 
       mysql_query($query,$con);
