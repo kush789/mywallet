@@ -24,7 +24,7 @@
 		$query = "UPDATE user_info SET balance = '$_SESSION[balance]' WHERE id = '$_SESSION[uid]'";
 		mysql_query($query,$con);
 
-		$query = "INSERT INTO balance_log (uid,type,amount,comment,reason) VALUES ('$_SESSION[uid]','1','$addbal','$_POST[add_comment]','-1') ";		
+		$query = "INSERT INTO balance_log (uid,type,amount,comment,reason,balance) VALUES ('$_SESSION[uid]','1','$addbal','$_POST[add_comment]','-1',$_SESSION[balance]) ";		
 		mysql_query($query,$con);
 
 
@@ -46,7 +46,7 @@
 			$query = "UPDATE user_info SET balance = '$_SESSION[balance]' WHERE id = '$_SESSION[id]'";
 			mysql_query($query,$con);
 
-			$query = "INSERT INTO balance_log (uid,type,amount,comment,reason) VALUES ('$_SESSION[uid]','0','$subbal','$_POST[sub_comment]','$_POST[sub_reason]') ";		
+			$query = "INSERT INTO balance_log (uid,type,amount,comment,reason,balance) VALUES ('$_SESSION[uid]','0','$subbal','$_POST[sub_comment]','$_POST[sub_reason]','$_SESSION[balance]') ";		
 			mysql_query($query,$con);
 
 		}

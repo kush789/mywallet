@@ -35,7 +35,8 @@
           `amount` integer(40) NOT NULL,
           `timestamp` TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP ,
           `comment` varchar(200),
-          `reason` integer(1) NOT NULL)";
+          `reason` integer(1) NOT NULL,
+          `balance` int(12) NOT NULL) ";
 
       mysql_query($query,$con);
 

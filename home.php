@@ -45,7 +45,7 @@
 
     	        <ul class='nav navbar-nav navbar-right'>
         	      <li class='active'><a href='./'>Home</a></li>
-            	  <li><a href='./anotherpage.php'>Another page</a></li>
+            	  <li><a href='./debit.php'>Debit</a></li>
             	  <li><a href='logout.php'>Logout</a></li>
             	  <li class='dropdown'>
             	    <a href='#' class='dropdown-toggle' data-toggle='dropdown'>Dropdown Menu<span class='caret'></span></a>
@@ -63,7 +63,7 @@
           		</div><!--/.nav-collapse -->
         	</div><!--/.container-fluid -->
       </div>
-   <div id='wrapper'>
+<div id='wrapper'>
 
 <div class='row'>
         <div class = 'col-md-3'></div>
@@ -176,7 +176,8 @@ echo "
                   <option value = '2'>Entertainment</option>
                   <option value = '3'>Books</option>
                   <option value = '4'>Travel</option>
-                  <option value = '5'>Miscellaneous</option>
+                  <option value = '5'>Bills</option>
+                  <option value = '6'>Miscellaneous</option>
                 </select>
               </div>
             </div>
