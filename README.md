@@ -14,5 +14,4 @@ Instructions
   
 To try it on your system, copy files in the htdocs folder, change database credentials across all pages (yes I know it's very tedious :P ) and then run on the localhost as configured in MAMP/MAMP/WAMP.
 
-
-And yes, don't forget to create a database `mywallet`. 
+The database and all tables are automatically created if they don't exist, so no need to manually create the db.
