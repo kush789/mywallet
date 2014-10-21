@@ -45,7 +45,7 @@
 
     	        <ul class='nav navbar-nav navbar-right'>
         	      <li class='active'><a href='./'>Home</a></li>
-            	  <li><a href='./debit.php'>Debit</a></li>
+            	  <li><a href='./log.php'>Transactions</a></li>
             	  <li><a href='logout.php'>Logout</a></li>
             	  <li class='dropdown'>
             	    <a href='#' class='dropdown-toggle' data-toggle='dropdown'>Dropdown Menu<span class='caret'></span></a>

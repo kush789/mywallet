@@ -45,7 +45,7 @@
 
               <ul class='nav navbar-nav navbar-right'>
                 <li ><a href='./'>Home</a></li>
-                <li class='active'><a href='./debit.php'>Debit</a></li>
+                <li class='active'><a href='./log.php'>Transactions</a></li>
                 <li><a href='logout.php'>Logout</a></li>
                 <li class='dropdown'>
                   <a href='#' class='dropdown-toggle' data-toggle='dropdown'>Dropdown Menu<span class='caret'></span></a>
@@ -65,19 +65,82 @@
       </div>
 <div id='wrapper'>
 
+
 <div class='row'>
-        <div class = 'col-md-3'></div>
-        <div class='col-md-6 col-md-offset-0'>
+        <div class = 'col-md-2'></div>
+        <div class='col-md-8 col-md-offset-0'>
             <div class='panel panel-default'>
 
                 <div class='panel-body ativa-scroll' >
                 <b>
+                <div class = 'row' style = 'text-align:center; font-size:30px;'>
+                  DEBIT<br><br>
+                </div>
+
+
                 <div class = 'row' style = 'font-size:25px;'>
+                  <div class = 'col-md-1'>Sno.</div>
+                  <div class = 'col-md-2'>Amount</div>
+                  <div class = 'col-md-2'>Source</div>
+                  <div class = 'col-md-2'>Balance</div>
+                  <div class = 'col-md-3'>Date and Time</div>
+                  <div class = 'col-md-2'>Comment</div>
+                </div><br>
+                </b>";
+
+    $con = mysql_connect("127.0.0.1","root","kush@1996");
+    mysql_select_db('mywallet',$con);
+    $query = " SELECT * FROM balance_log WHERE uid LIKE '$_SESSION[uid]' AND type LIKE '1' ";
+    $data = mysql_query($query,$con);
+    $count = 1;
+
+    while( $row = mysql_fetch_array($data))
+    {
+      echo "<div class = 'row'>";
+      echo "<div class = 'col-md-1'>".$count."</div>";
+      $count+=1;
+      echo"<div class = 'col-md-2'>".$row['amount']."</div>";
+      echo"<div class = 'col-md-2'>".$row['reason']."</div>";
+      echo "<div class = 'col-md-2'>".$row['balance']."</div>";
+      echo "<div class = 'col-md-3'>".$row['timestamp']."</div>";
+      echo "<div class = 'col-md-2'>".$row['comment']."</div>";
+
+      echo"</div>";
+
+    }
+
+
+
+
+echo "
+             </div>
+            </div>
+          </div>
+
+  </div>
+
+</div>
+
+<div id='wrapper'>
+
+<div class='row'>
+        <div class = 'col-md-2'></div>
+        <div class='col-md-8 col-md-offset-0'>
+            <div class='panel panel-default'>
+                <div class='panel-body ativa-scroll' >
+                <b>
+                <div class = 'row' style = 'text-align:center; font-size:30px;'>
+                  CREDIT<br><br>
+                </div>
+
+                <div class = 'row' style = 'font-size:25px;'>
+                  <div class = 'col-md-1'>Sno.</div>
                   <div class = 'col-md-2'>Amount</div>
                   <div class = 'col-md-2'>Reason</div>
                   <div class = 'col-md-2'>Balance</div>
+                  <div class = 'col-md-3'>Date and Time</div>
                   <div class = 'col-md-2'>Comment</div>
-                </div><br><br>
+                </div><br>
                 </b>
 
 
@@ -89,10 +152,12 @@
     $query = " SELECT * FROM balance_log WHERE uid LIKE '$_SESSION[uid]' AND type LIKE '0' ";
     $data = mysql_query($query,$con);
 
-
+    $count = 1;
     while( $row = mysql_fetch_array($data))
     {
       echo "<div class = 'row'>";
+      echo "<div class = 'col-md-1'>".$count."</div>";
+      $count+=1;
       echo"<div class = 'col-md-2'>".$row['amount']."</div>";
       echo "<div class = 'col-md-2'>";
       if ($row['reason']==0)
@@ -125,6 +190,7 @@
       }
       echo "</div>";
       echo "<div class = 'col-md-2'>".$row['balance']."</div>";
+      echo "<div class = 'col-md-3'>".$row['timestamp']."</div>";
       echo "<div class = 'col-md-2'>".$row['comment']."</div>";
 
       echo"</div>";
@@ -144,6 +210,7 @@ echo "
 </div>
 
 
+
  
     <script src='./js/jquery-1.10.2.min.js'></script>
     <script src='./js/bootstrap.min.js'></script>
@@ -152,7 +219,7 @@ echo "
   $(document).ready(ajustamodal);
   $(window).resize(ajustamodal);
   function ajustamodal() {
-    var altura = $(window).height() - 255; //value corresponding to the modal heading + footer
+    var altura = $(window).height() - 400; //value corresponding to the modal heading + footer
     $('.ativa-scroll').css({'height':altura,'overflow-y':'auto'});
   }
 </script>
