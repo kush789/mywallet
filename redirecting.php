@@ -7,7 +7,7 @@
 	{			
 		$found = 0;
 
-		$con = mysql_connect("127.0.0.1","root","kush@1996");
+		$con = mysql_connect("localhost","root","styc1845");
 		mysql_select_db("mywallet",$con);
 		$q1 = "SELECT * FROM user_info WHERE email LIKE '$_POST[signin_email]' ";
 		if($data = mysql_query($q1,$con))
@@ -55,11 +55,13 @@
 	{
 		if ($_POST['pass']==$_POST['passcheck'])
 		{
-			$con = mysql_connect("127.0.0.1", "root","kush@1996");
+			$con = mysql_connect("localhost", "root","styc1845");
 			mysql_select_db("mywallet",$con);
 
 			$q1 = "INSERT INTO user_info (fname,lname,email,dob,mobile,balance,pass) VALUES ('$_POST[fname]','$_POST[lname]','$_POST[email]','$_POST[dob]','$_POST[number]','0','$_POST[pass]')";		
 			mysql_query($q1,$con);
+	
+
 
 			$_SESSION['state'] = 'invalid';
 			$_SESSION['message'] = "successfully registered";

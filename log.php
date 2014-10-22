@@ -88,7 +88,7 @@
                 </div><br>
                 </b>";
 
-    $con = mysql_connect("127.0.0.1","root","kush@1996");
+    $con = mysql_connect("localhost","root","styc1845");
     mysql_select_db('mywallet',$con);
     $query = " SELECT * FROM balance_log WHERE uid LIKE '$_SESSION[uid]' AND type LIKE '1' ";
     $data = mysql_query($query,$con);
@@ -147,7 +147,7 @@ echo "
 
                 ";
 
-    $con = mysql_connect("127.0.0.1","root","kush@1996");
+    $con = mysql_connect("localhost","root","styc1845   ");   
     mysql_select_db('mywallet',$con);
     $query = " SELECT * FROM balance_log WHERE uid LIKE '$_SESSION[uid]' AND type LIKE '0' ";
     $data = mysql_query($query,$con);

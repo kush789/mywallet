@@ -13,11 +13,11 @@
 	else if (isset($_POST['add_submit']))
 	{
 
-	$con = mysql_connect("127.0.0.1","root","kush@1996");
+	$con = mysql_connect("localhost","root","styc1845");
 	mysql_select_db("mywallet",$con);	
 
-		$currbal = (int) $_SESSION['balance'];
-		$addbal = (int) $_POST['add'];
+		$currbal = (int)$_SESSION['balance'];
+		$addbal = (int)$_POST['add'];
 		$currbal = $currbal + $addbal;
 		$_SESSION['balance'] = $currbal;
 
@@ -34,16 +34,16 @@
 	else if (isset($_POST['subtract_submit']))
 	{
 
-	$con = mysql_connect("127.0.0.1","root","kush@1996");
+	$con = mysql_connect("localhost","root","styc1845");
 	mysql_select_db("mywallet",$con);	
 
-		$currbal = (int) $_SESSION['balance'];
-		$subbal = (int) $_POST['sub'];
+		$currbal = (int)$_SESSION['balance'];
+		$subbal = (int)$_POST['sub'];
 		$currbal = $currbal - $subbal;
 		if ($currbal>-1)
 		{
 			$_SESSION['balance'] = $currbal;
-			$query = "UPDATE user_info SET balance = '$_SESSION[balance]' WHERE id = '$_SESSION[id]'";
+			$query = "UPDATE user_info SET balance = '$_SESSION[balance]' WHERE id = '$_SESSION[uid]'";
 			mysql_query($query,$con);
 
 			$query = "INSERT INTO balance_log (uid,type,amount,comment,reason,balance) VALUES ('$_SESSION[uid]','0','$subbal','$_POST[sub_comment]','$_POST[sub_reason]','$_SESSION[balance]') ";		

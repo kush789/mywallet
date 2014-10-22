@@ -1,4 +1,7 @@
 <?php 
+
+  $pattern = '/\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i';
+
   session_start();
   if ($_SESSION['state']== 'valid')
   {
@@ -10,7 +13,7 @@
 
     if(!mysql_select_db("mywallet",$con))
     {
-      $con = mysql_connect("127.0.0.1","root","kush@1996");
+      $con = mysql_connect("localhost","root","styc1845");
       $q = 'CREATE DATABASE mywallet';
       mysql_query($q,$con);
       mysql_select_db('mywallet',$con);
@@ -57,7 +60,7 @@ echo "
         <div class = 'col-md-2'></div>
         <div class='col-md-5 col-md-offset-0' style = 'margin-top:20px;'>
             <div class='panel panel-default'>
-                <div class='panel-heading' style = 'text-align:center;font-size:23px;'><strong>Sign Up</strong>
+                <div class='panel-heading' style = 'text-align:center;font-size:23px;'><strong>Sign In</strong>
 
                 </div>
                 <div class='panel-body'>
@@ -126,7 +129,7 @@ echo "
               <div class = 'row'>
                 <div class = 'form-group'>
                 <div class = 'col-md-12'>                  
-                  <input type = 'text' pattern='[^ @]*@[^ @]*' name = 'email' placeholder = 'Email' autocomplete = 'off' class='form-control input-lg'><br>
+                  <input type = 'text' pattern='".$pattern."' name = 'email' placeholder = 'Email' autocomplete = 'off' class='form-control input-lg'><br>
                 </div>
                 </div>
               </div>
