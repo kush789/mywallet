@@ -64,5 +64,4 @@
 		header("Location: index.php");
 	}
 
-
 ?>
